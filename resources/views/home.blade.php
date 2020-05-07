@@ -19,13 +19,34 @@
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">    
                             <input type="hidden" name="type" value="yaglik">
                             <div class="form-group">
-                                <label for="tree">Ağaç Türü</label>
-                                <input type="text" class="form-control" name="tree" placeholder="Ağaç Türü" required>
+                                <label for="place">Ağaç Türü</label>
+                                {{-- <input type="text" class="form-control" name="place" placeholder="Ağaç Türü" required> --}}
+                                <select class="custom-select" name="place" id="" required>
+                                    <option value="null" selected>Lütfen Ağaç Türünüzü Seçiniz</option>
+									<option value="akzeytin">Akzeytin</option>
+                                    <option value="ayvalik">Ayvalık</option>
+                                    <option value="cakir">Çakır</option>
+                                    <option value="cekiste">Çekişte</option>
+									<option value="emiralem">Emiralem</option>
+                                    <option value="erkence">Erkence</option>
+									<option value="hurmakara">Hurmakara</option>
+                                    <option value="memecik">Memecik</option>
+                                    <option value="memeli">Memeli</option>
+                                </select>
                             </div>
                         
                             <div class="form-group">
-                                <label for="age">Ağaç Yaşı</label>
-                                <input type="text" class="form-control" name="age" placeholder="Ağaç" required>
+                                <label for="place">Ağaç Yaşı</label>
+                                {{-- <input type="text" class="form-control" name="place" placeholder="Ağaç Yaşı" required> --}}
+                                <select class="custom-select" name="place" id="" required>
+                                    <option value="null" selected>Lütfen Ağacınızın Yaşını Seçiniz</option>
+                                    <option value="0-1">0-1</option>
+                                    <option value="1-3">1-3</option>
+                                    <option value="3-5">3-5</option>
+                                    <option value="5-7">5-7</option>
+                                    <option value="7+">7+</option>
+                                   
+                                </select>
                             </div>
                         
                             <div class="form-group">
@@ -34,12 +55,13 @@
                                 <select class="custom-select" name="place" id="" required>
                                     <option value="null" selected>Lütfen Bölge Seçiniz</option>
                                     <option value="akdeniz">Akdeniz Bölgesi</option>
-                                    <option value="dogu">Doğu Anadolu Bölgesis</option>
+                                    <option value="dogu">Doğu Anadolu Bölgesi</option>
                                     <option value="ege">Ege Bölgesi</option>
                                     <option value="guneydogu">Güneydoğu Anadolu Bölgesi</option>
                                     <option value="anadolu">İç Anadolu Bölgesi</option>
+									 <option value="karadeniz">Karadeniz Bölgesi</option>
                                     <option value="marmara">Marmara Bölgesi</option>
-                                    <option value="karadeniz">Karadeniz Bölgesi</option>
+                                   
                                 </select>
                             </div>
                         
@@ -136,7 +158,9 @@
                                 <label for="type">Dikilen Rakım</label>
                                 <input type="text" class="form-control" name="altitude" placeholder="Dikilen Rakım" required>
                             </div>
-                            <button type="submit" class="btn btn-primary">Yıllık Plan Oluştur</button>
+							<div align="center">
+                            <button type="submit" class="btn btn-primary" >Yıllık Plan Oluştur</button>
+							</div>
                         </form>
                     </div>
                 </div>
@@ -151,14 +175,38 @@
                         <form action="{{ route('save') }}" method="POST">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">    
                             <input type="hidden" name="type" value="sofralik">
-                            <div class="form-group">
-                                <label for="tree">Ağaç Türü</label>
-                                <input type="text" class="form-control" name="tree" placeholder="Ağaç Türü" required>
+                           <div class="form-group">
+                                <label for="place">Ağaç Türü</label>
+                                {{-- <input type="text" class="form-control" name="place" placeholder="Ağaç Türü" required> --}}
+                                <select class="custom-select" name="place" id="" required>
+                                    <option value="null" selected>Lütfen Ağaç Türünüzü Seçiniz</option>
+                                    <option value="ayvalik">Ayvalık</option>
+                                    <option value="cilli">Çilli</option>
+                                    <option value="domat">Domat</option>
+									<option value="edremit">Edremit</option>
+                                    <option value="erkence">Erkence</option>
+									<option value="esek">Eşşek</option>
+									<option value="izmirzeytin">İzmir</option>
+									 <option value="kirma">Kırma</option>
+									<option value="kiraz">Kiraz</option> 
+                                    <option value="memecik">Memecik</option>
+                                    <option value="uslu">Uslu</option>
+                                    <option value="yamalak">Yamalak Kabası</option>
+                                </select>
                             </div>
                         
-                            <div class="form-group">
-                                <label for="age">Ağaç Yaşı</label>
-                                <input type="text" class="form-control" name="age" placeholder="Ağaç" required>
+                           <div class="form-group">
+                                <label for="place">Ağaç Yaşı</label>
+                                {{-- <input type="text" class="form-control" name="place" placeholder="Ağaç Yaşı" required> --}}
+                                <select class="custom-select" name="place" id="" required>
+                                    <option value="null" selected>Lütfen Ağacınızın Yaşını Seçiniz</option>
+                                    <option value="0-1">0-1</option>
+                                    <option value="1-3">1-3</option>
+                                    <option value="3-5">3-5</option>
+                                    <option value="5-7">5-7</option>
+                                    <option value="7+">7+</option>
+                                   
+                                </select>
                             </div>
                         
                             <div class="form-group">
@@ -167,12 +215,13 @@
                                 <select class="custom-select" name="place" id="" required>
                                     <option value="null" selected>Lütfen Bölge Seçiniz</option>
                                     <option value="akdeniz">Akdeniz Bölgesi</option>
-                                    <option value="dogu">Doğu Anadolu Bölgesis</option>
+                                    <option value="dogu">Doğu Anadolu Bölgesi</option>
                                     <option value="ege">Ege Bölgesi</option>
                                     <option value="guneydogu">Güneydoğu Anadolu Bölgesi</option>
                                     <option value="anadolu">İç Anadolu Bölgesi</option>
-                                    <option value="marmara">Marmara Bölgesi:</option>
-                                    <option value="karadeniz">Karadeniz Bölgesi:</option>
+									<option value="karadeniz">Karadeniz Bölgesi</option>
+                                    <option value="marmara">Marmara Bölgesi</option>
+                                    
                                 </select>
                             </div>
                         
@@ -269,7 +318,9 @@
                                 <label for="type">Dikilen Rakım</label>
                                 <input type="text" class="form-control" name="altitude" placeholder="Dikilen Rakım" required>
                             </div>
-                            <button type="submit" class="btn btn-primary">Yıllık Plan Oluştur</button>
+                           <div align="center">
+                            <button type="submit" class="btn btn-primary" >Yıllık Plan Oluştur</button>
+							</div>
                         </form>
                     </div>
                 </div>

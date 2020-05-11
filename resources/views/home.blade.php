@@ -15,13 +15,13 @@
                     <div class="card-header">Yağlık Zeytin</div>
                     <img class="card-img-top" src="images/zeytinyagi.jpg" alt="zeytinyagi">
                     <div class="card-body">
-                    <form action="{{ route('save') }}" method="POST">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">    
+                        <form action="{{ route('save') }}" method="POST">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">   
+                            <input type="hidden" name="user_id" value="{{Auth::user()->id}}"> 
                             <input type="hidden" name="type" value="yaglik">
                             <div class="form-group">
                                 <label for="place">Ağaç Türü</label>
-                                {{-- <input type="text" class="form-control" name="place" placeholder="Ağaç Türü" required> --}}
-                                <select class="custom-select" name="place" id="" required>
+                                <select class="custom-select" name="tree_type" id="" required>
                                     <option value="null" selected>Lütfen Ağaç Türünüzü Seçiniz</option>
 									<option value="akzeytin">Akzeytin</option>
                                     <option value="ayvalik">Ayvalık</option>
@@ -37,21 +37,19 @@
                         
                             <div class="form-group">
                                 <label for="place">Ağaç Yaşı</label>
-                                {{-- <input type="text" class="form-control" name="place" placeholder="Ağaç Yaşı" required> --}}
-                                <select class="custom-select" name="place" id="" required>
+                                <select class="custom-select" name="age" id="" required>
                                     <option value="null" selected>Lütfen Ağacınızın Yaşını Seçiniz</option>
-                                    <option value="0-1">0-1</option>
+                                    <option value="0">Yeni Başlayan</option>
                                     <option value="1-3">1-3</option>
-                                    <option value="3-5">3-5</option>
-                                    <option value="5-7">5-7</option>
-                                    <option value="7+">7+</option>
-                                   
+                                    <option value="4-6">4-6</option>
+                                    <option value="25">25 kg Ve Altı  Ürün Veren</option>
+                                    <option value="25-50">25-50 kg Arasında Ürün Veren</option>
+                                    <option value="50">50 kg Ve Üstü Ürün Veren</option>
                                 </select>
                             </div>
                         
                             <div class="form-group">
                                 <label for="place">Bölge</label>
-                                {{-- <input type="text" class="form-control" name="place" placeholder="Bölge" required> --}}
                                 <select class="custom-select" name="place" id="" required>
                                     <option value="null" selected>Lütfen Bölge Seçiniz</option>
                                     <option value="akdeniz">Akdeniz Bölgesi</option>
@@ -59,13 +57,12 @@
                                     <option value="ege">Ege Bölgesi</option>
                                     <option value="guneydogu">Güneydoğu Anadolu Bölgesi</option>
                                     <option value="anadolu">İç Anadolu Bölgesi</option>
-									 <option value="karadeniz">Karadeniz Bölgesi</option>
+									<option value="karadeniz">Karadeniz Bölgesi</option>
                                     <option value="marmara">Marmara Bölgesi</option>
-                                   
                                 </select>
                             </div>
                         
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label for="city">İl</label>
                                 <select class="custom-select" name="city" id="" required>
                                     <option value="null" selected>Lütfen İlinizi Seçiniz</option>
@@ -153,7 +150,7 @@
                                     <option value="zonguldak">Zonguldak</option>
                                 </select>
                             </div>
-                        
+                         -->
                             <div class="form-group">
                                 <label for="type">Dikilen Rakım</label>
                                 <input type="text" class="form-control" name="altitude" placeholder="Dikilen Rakım" required>
@@ -175,43 +172,38 @@
                         <form action="{{ route('save') }}" method="POST">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">    
                             <input type="hidden" name="type" value="sofralik">
-                           <div class="form-group">
+                            <input type="hidden" name="user_id" value="{{Auth::user()->id}}"> 
+                            <div class="form-group">
                                 <label for="place">Ağaç Türü</label>
-                                {{-- <input type="text" class="form-control" name="place" placeholder="Ağaç Türü" required> --}}
-                                <select class="custom-select" name="place" id="" required>
+                                <select class="custom-select" name="tree_type" id="" required>
                                     <option value="null" selected>Lütfen Ağaç Türünüzü Seçiniz</option>
+									<option value="akzeytin">Akzeytin</option>
                                     <option value="ayvalik">Ayvalık</option>
-                                    <option value="cilli">Çilli</option>
-                                    <option value="domat">Domat</option>
-									<option value="edremit">Edremit</option>
+                                    <option value="cakir">Çakır</option>
+                                    <option value="cekiste">Çekişte</option>
+									<option value="emiralem">Emiralem</option>
                                     <option value="erkence">Erkence</option>
-									<option value="esek">Eşşek</option>
-									<option value="izmirzeytin">İzmir</option>
-									 <option value="kirma">Kırma</option>
-									<option value="kiraz">Kiraz</option> 
+									<option value="hurmakara">Hurmakara</option>
                                     <option value="memecik">Memecik</option>
-                                    <option value="uslu">Uslu</option>
-                                    <option value="yamalak">Yamalak Kabası</option>
+                                    <option value="memeli">Memeli</option>
                                 </select>
                             </div>
                         
-                           <div class="form-group">
+                            <div class="form-group">
                                 <label for="place">Ağaç Yaşı</label>
-                                {{-- <input type="text" class="form-control" name="place" placeholder="Ağaç Yaşı" required> --}}
-                                <select class="custom-select" name="place" id="" required>
+                                <select class="custom-select" name="age" id="" required>
                                     <option value="null" selected>Lütfen Ağacınızın Yaşını Seçiniz</option>
-                                    <option value="0-1">0-1</option>
+                                    <option value="0">Yeni Başlayan</option>
                                     <option value="1-3">1-3</option>
-                                    <option value="3-5">3-5</option>
-                                    <option value="5-7">5-7</option>
-                                    <option value="7+">7+</option>
-                                   
+                                    <option value="3-5">4-6</option>
+                                    <option value="25">25 kg Ve Altı  Ürün Veren</option>
+                                    <option value="25-50">25-50 kg Arasında Ürün Veren</option>
+                                    <option value="50">50 kg Ve Üstü Ürün Veren</option>
                                 </select>
                             </div>
                         
                             <div class="form-group">
                                 <label for="place">Bölge</label>
-                                {{-- <input type="text" class="form-control" name="place" placeholder="Bölge" required> --}}
                                 <select class="custom-select" name="place" id="" required>
                                     <option value="null" selected>Lütfen Bölge Seçiniz</option>
                                     <option value="akdeniz">Akdeniz Bölgesi</option>
@@ -221,11 +213,10 @@
                                     <option value="anadolu">İç Anadolu Bölgesi</option>
 									<option value="karadeniz">Karadeniz Bölgesi</option>
                                     <option value="marmara">Marmara Bölgesi</option>
-                                    
                                 </select>
                             </div>
                         
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label for="city">İl</label>
                                 <select class="custom-select" name="city" id="" required>
                                     <option value="null" selected>Lütfen İlinizi Seçiniz</option>
@@ -313,12 +304,12 @@
                                     <option value="zonguldak">Zonguldak</option>
                                 </select>
                             </div>
-                        
+                         -->
                             <div class="form-group">
                                 <label for="type">Dikilen Rakım</label>
                                 <input type="text" class="form-control" name="altitude" placeholder="Dikilen Rakım" required>
                             </div>
-                           <div align="center">
+							<div align="center">
                             <button type="submit" class="btn btn-primary" >Yıllık Plan Oluştur</button>
 							</div>
                         </form>

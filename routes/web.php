@@ -15,8 +15,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::get('/bilgilendirme', function () {
+    return view('info');
+});
+
+Route::get('/galeri', function () {
+    return view('galeri');
+});
+
+Route::get('/hakkimizda', function () {
+    return view('about');
+});
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('/kayit', 'HomeController@save')->name('save');
+Route::post('/plan', 'HomeController@save')->name('save');
+Route::get('/planlar', 'HomeController@plans')->name('plans');
+// Route::post('/plan', 'HomeController@plan')->name('plan');

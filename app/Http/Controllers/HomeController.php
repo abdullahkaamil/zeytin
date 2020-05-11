@@ -1,27 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
 use Illuminate\Http\Request;
 use App\ZeytinType;
+use App\Plan;
 use \DateTime;
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+    
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         return view('home');
@@ -29,16 +22,38 @@ class HomeController extends Controller
 
     public function save(Request $request){
         $inputs = $request->all();
+        
+        $data['plans'] = Plan::where('age', $inputs['age'] )->get();
+        $data['bolge'] = $inputs['place'];
+        $data['tree_type'] = $inputs['tree_type'];
+
         ZeytinType::insert(
                     [
-                    'treeType' => $inputs['tree'] ,
+                    'type' => $inputs['type'],
+                    'user_id' => $inputs['user_id'],
+                    'treeType' => $inputs['tree_type'] ,
                     'treeAge' => $inputs['age'] ,
                     'place' => $inputs['place'] ,
-                    'city' => $inputs['city'] ,
-                    'type' => $inputs['type'] ,
                     'altitude'=> $inputs['altitude'] ,
                     'created_at' =>  new DateTime()
                     ]
                 );
-        }
+
+        return view('plan' ,$data);
+        
+    }
+
+    public function plans(){
+        $user = Auth::user();   
+            
+        $treeage = ZeytinType::select('treeAge', 'place', 'treeType')->where('user_id','=', $user->id)->first()->toArray();
+        $data['plans'] = Plan::where('age', $treeage['treeAge'] )->get();
+
+        $data['bolge'] = $treeage['place'];
+        $data['tree_type'] = $treeage['treeType'];
+
+        // dd($data);
+
+        return view('plan' ,$data);
+    }
 }

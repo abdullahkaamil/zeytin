@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateYillik_planTable extends Migration
+class CreateZeytinTipiTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateYillik_planTable extends Migration
      */
     public function up()
     {
-        Schema::create('yillik_plan', function (Blueprint $table) {
+        Schema::create('zeytin_tipi', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('plan_id');
@@ -32,6 +32,6 @@ class CreateYillik_planTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('yillik_plan');
+        Schema::dropIfExists('zeytin_tipi');
     }
 }

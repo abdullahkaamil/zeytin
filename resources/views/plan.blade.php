@@ -3,80 +3,69 @@
 @section('content')
 <?php  
 
+$bolge_custom = [
+  "akdeniz" => 'Akdeniz Bölgesi',
+  "dogu" =>'Doğu Anadolu Bölgesi',
+  "ege" =>'Ege Bölgesi',
+  "guneydogu" =>'Güneydoğu Anadolu Bölgesi',
+  "anadolu" =>'İç Anadolu Bölgesi',
+  "karadeniz" =>'Karadeniz Bölgesi',
+  "marmara" =>'Marmara Bölgesi'
+];
 
-switch ($bolge) {
-  case "akdeniz":
-    $bol = 'Akdeniz';
-    break;
-  case "dogu":
-    $bol = 'Doğu Anadolu';
-    break;
-  case "ege":
-    $bol = 'Ege';
-    break;
-    case "guneydogu":
-        $bol = 'Güneydoğu Anadolu';
-        break;
-        case "anadolu":
-            $bol = 'İç Anadolu';
-            break;
-            case "karadeniz":
-                $bol = 'Karadeniz';
-                break;
-                case "marmara":
-                    $bol = 'Marmara';
-                    break;
-  default:
-    $bol = '';
-}
-
-switch ($tree_type) {
-    case "akzeytin":
-      $tree = 'Akzeytin';
-      break;
-    case "ayvalik":
-      $tree = 'Ayvalık';
-      break;
-    case "cakir":
-      $tree = 'Çakır';
-      break;
-      case "cekiste":
-        $tree = 'Çekişte';
-        break;
-        case "erkence":
-        $tree = 'Erkence';
-        break;
-        case "hurmakara":
-            $tree = 'Hurmakara';
-            break;
-            case "memecik":
-            $tree = 'Memecik';
-        break;
-            case "memeli":
-            $tree = 'Memeli';
-            break;
-                    case "emiralem":
-                $tree = 'Emiralem';
-            break;
-    default:
-      $tree = '';
-  }
-
-
+$tree_custom = [
+"akzeytin" => "Akzeytin",
+"ayvalik" => "Ayvalık",
+"cakir" => "Çakır",
+"cekiste" => "Çekişte",
+"emiralem" => "Emiralem",
+"erkence" => "Erkence",
+"hurmakara" => "Hurmakara",
+"memecik" => "Memecik",
+"memeli" => "Memeli",
+];
 
 ?>
 <div class="container">
+@if(\Session::has('danger'))
+  <div class="alert alert-danger">
+    <p> {{\Session::get('danger')}}</p>
+  </div>
+@endif
+
+@if(!empty($plans))
+  @foreach($plans as $key => $plan1)
     <div class="col-lg-12">
         <table class="table table-bordered text-center">
             <thead>
                 <tr>
                     <th colspan="4" class="text-center"> 
-                     {{$bol}} Bölgesi</th>
+                    <?php 
+                    if( isset( $bolge_custom[$bolges[$key] ]) ) {
+                      $value = $bolge_custom[$bolges[$key] ];
+                    }
+                   ?>
+                    {{$value}}
+                    </th>
                 </tr>
                 <tr>
-                    <th colspan="2" class="text-center">{{$tree}}</th>
+                    <th colspan="2" class="text-center">
+                    <?php 
+                    if( isset( $tree_custom[$tree_types[$key] ]) ) {
+                      $value_tree = $tree_custom[$tree_types[$key] ];
+                    }
+                   ?>
+                    {{$value_tree}}
+                    
+                    </th>
                     <th> </th>
-                    <th></th>
+                    <th>
+                    <form action="{{ route('sil', $id[$key])}}" method="post">
+                    @csrf
+                    <button type="submit" class="btn btn-danger" onclick="return confirm
+                    ('Emin Misniz ? ')" >Sil</button>
+                    </form>
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -86,16 +75,26 @@ switch ($tree_type) {
                     <td>Uygulama Dönemi</td>
                     <td>Uygulama</td>
                 </tr>
-                @foreach($plans as $plan)
-                <tr>
-                    <td>{{$plan->nutrient}}</td>
-                    <td>{{$plan->tree}}</td>
-                    <td>{{$plan->period}}</td>
-                    <td>{{$plan->application}}</td>
-                </tr>
-                @endforeach
+                
+                  @foreach($plan1 as $plan)
+                    <tr>
+                        <td>{{$plan->nutrient}}</td>
+                        <td>{{$plan->tree}}</td>
+                        <td>{{$plan->period}}</td>
+                        <td>{{$plan->application}}</td>
+                    </tr>
+                  @endforeach
             </tbody>
         </table>
     </div>
+  @endforeach
+
+@else 
+    <div class="col-lg-12">
+    <p>
+     Her hangi bir planiniz bulunmamaktadir
+    </p>
+    </div>
+@endif
 </div>
 @endsection

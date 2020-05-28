@@ -39,7 +39,7 @@ class HomeController extends Controller
                     ]
                 );
 
-        return view('plan' ,$data);
+                return redirect('planlar')->with("success", "Planınız Kayıt Edilmistir..");
         
     }
 

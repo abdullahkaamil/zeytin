@@ -19,7 +19,7 @@ class CreateZeytinTipiTable extends Migration
             $table->string('type');
             $table->integer('plan_id');
             $table->text('treeType');
-            $table->integer('treeAge');
+            $table->string('treeAge');
             $table->text('place');
             $table->text('altitude');
             $table->timestamps();

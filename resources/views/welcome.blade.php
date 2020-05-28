@@ -12,7 +12,7 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-100 " src="images/zeytin1.png" alt="First slide">
+      <img class="d-block w-100 " src="images\thumbs.jpg" alt="First slide">
     </div>
     <div class="carousel-item">
       <img class="d-block w-100 " src="images/ze4.jpg" alt="Second slide">

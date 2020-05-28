@@ -16,6 +16,7 @@ class CreateZeytinTipiTable extends Migration
         Schema::create('zeytin_tipi', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
+            $table->string('type');
             $table->integer('plan_id');
             $table->text('treeType');
             $table->integer('treeAge');

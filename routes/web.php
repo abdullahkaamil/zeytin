@@ -35,4 +35,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/plan', 'HomeController@save')->name('save');
 Route::get('/planlar', 'HomeController@plans')->name('plans');
+Route::post('{id}/sil','HomeController@sil')->name('sil');
 // Route::post('/plan', 'HomeController@plan')->name('plan');

@@ -45,15 +45,29 @@ class HomeController extends Controller
 
     public function plans(){
         $user = Auth::user();   
-            
-        $treeage = ZeytinType::select('treeAge', 'place', 'treeType')->where('user_id','=', $user->id)->first()->toArray();
-        $data['plans'] = Plan::where('age', $treeage['treeAge'] )->get();
+        $data['plans'] = [];
+        $data['bolges'] = []; 
+        $data['tree_types'] = []; 
 
-        $data['bolge'] = $treeage['place'];
-        $data['tree_type'] = $treeage['treeType'];
+        $treeages = ZeytinType::select('id','treeAge', 'place', 'treeType')->where('user_id','=', $user->id)->get()->toArray();
 
-        // dd($data);
+        if(!empty($treeages)){
+            foreach($treeages as $key => $treeage){
+                $data['plans'][] = Plan::where('age', $treeage['treeAge'] )->get();
+                $data['bolges'][] = $treeage['place'];
+                $data['tree_types'][]= $treeage['treeType'];
+                $data['id'][]= $treeage['id'];
+            }
+        }
+        
 
         return view('plan' ,$data);
+    }
+
+    public function sil($id){
+        $zeytin = ZeytinType::destroy($id);
+        if ($zeytin){
+            return redirect('planlar')->with("danger", "Plan kaldırıldı..");
+        }
     }
 }

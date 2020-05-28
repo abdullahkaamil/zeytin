@@ -12,16 +12,14 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-100" src="images/zeytin.png" alt="First slide">
+      <img class="d-block w-100 " src="images/zeytin1.png" alt="First slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="images/zeytin1.png" alt="Second slide">
+      <img class="d-block w-100 " src="images/ze4.jpg" alt="Second slide">
     </div>
+   
     <div class="carousel-item">
-      <img class="d-block w-100" src="images/zeytin2.png" alt="Third slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="images/zeytin3.png" alt="forth slide">
+      <img class="d-block w-100 " src="images/ze2.jpg" alt="forth slide">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -35,4 +33,12 @@
 </div>
 </div>
 </body>
+
+<footer>
+<div class="d-block w-100"> 
+       <!--HavaDurumuTahmin.com HTML kodu baslangici-->
+        <br> &nbsp&nbsp&nbsp <script language="JavaScript" type="text/javascript" src="https://www.havadurumutahmin.com/widget.php?il=izmir&ilce=bornova&t=1"></script><a href="https://www.havadurumutahmin.com/turkiye-sehirleri-hava-durumu-tahminleri.php" title="15 Günlük Hava Durumu Tahminleri" style="text-align:center; font-size: 10px;color:#0000FF">Türkiye Hava Durumu Tahminleri</a>
+       <!--HavaDurumuTahmin.com HTML kodu sonu-->
+        </div>
+        </footer>
 @endsection

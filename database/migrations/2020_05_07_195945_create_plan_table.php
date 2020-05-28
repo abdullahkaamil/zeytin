@@ -18,6 +18,7 @@ class CreatePlanTable extends Migration
             $table->text('nutrient');
             $table->integer('tree');
             $table->text('period');
+            $table->text('age');
             $table->text('application');
             $table->timestamps();
         });

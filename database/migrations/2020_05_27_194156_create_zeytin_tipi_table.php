@@ -17,7 +17,6 @@ class CreateZeytinTipiTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->string('type');
-            $table->integer('plan_id');
             $table->text('treeType');
             $table->string('treeAge');
             $table->text('place');

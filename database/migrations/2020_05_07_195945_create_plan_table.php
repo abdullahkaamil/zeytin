@@ -16,7 +16,7 @@ class CreatePlanTable extends Migration
         Schema::create('plan', function (Blueprint $table) {
             $table->increments('id');
             $table->text('nutrient');
-            $table->text('tree');
+            $table->text('tree')->nullable();
             $table->text('period');
             $table->text('age');
             $table->text('application');
